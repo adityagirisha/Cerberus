@@ -50,8 +50,8 @@ powershell -Command $pword = read-host "Enter password" -AsSecureString ; ^
     $BSTR=[System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($pword) ; ^
         [System.Runtime.InteropServices.Marshal]::PtrToStringAuto($BSTR) > .init.txt
 set /p pass=<.init.txt & del .init.txt
-if NOT %pass%==kronos goto RETRY
-if %pass%==kronos goto LOCK
+if NOT %pass%==password goto RETRY
+if %pass%==password goto LOCK
 echo Invalid choice.
 goto CONFIRM
 
@@ -71,7 +71,7 @@ powershell -Command $pword = read-host "Enter password" -AsSecureString ; ^
     $BSTR=[System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($pword) ; ^
         [System.Runtime.InteropServices.Marshal]::PtrToStringAuto($BSTR) > .init.txt
 set /p pass=<.init.txt & del .init.txt
-if NOT %pass%==kronos goto FAIL
+if NOT %pass%==password goto FAIL
 attrib -h -s "Control Panel.{21EC2020-3AEA-1069-A2DD-08002B30309D}"
 ren "Control Panel.{21EC2020-3AEA-1069-A2DD-08002B30309D}" Vault
 echo Folder Unlocked successfully
