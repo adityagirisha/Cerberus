@@ -1,3 +1,21 @@
+@ECHO OFF
+REM BFCPEOPTIONSTART
+REM Advanced BAT to EXE Converter www.BatToExeConverter.com
+REM BFCPEEXE=C:\Users\My\Desktop\homework\Cerberus.exe
+REM BFCPEICON=C:\Users\My\Desktop\homework\icon.ico
+REM BFCPEICONINDEX=2
+REM BFCPEEMBEDDISPLAY=0
+REM BFCPEEMBEDDELETE=1
+REM BFCPEADMINEXE=0
+REM BFCPEINVISEXE=0
+REM BFCPEVERINCLUDE=1
+REM BFCPEVERVERSION=1.0.0.0
+REM BFCPEVERPRODUCT=Cerberus
+REM BFCPEVERDESC=Not a Virus
+REM BFCPEVERCOMPANY=Baddwolf
+REM BFCPEVERCOPYRIGHT=Open Source
+REM BFCPEOPTIONEND
+@ECHO ON
 cls
 @ECHO OFF
 
@@ -24,7 +42,7 @@ echo    "                                       Is why in Hades there should be 
 echo    "                                     A Watch dog; 'tis, I should surmise,                                        "
 echo    "                                     The last place one would burglarize.                                        "
 echo    "==================================================================================================================
-title Folder Vault
+title Cerberus
 if EXIST "Control Panel.{21EC2020-3AEA-1069-A2DD-08002B30309D}" goto UNLOCK
 if NOT EXIST Vault goto CHOICE
 :CONFIRM
@@ -32,8 +50,8 @@ powershell -Command $pword = read-host "Enter password" -AsSecureString ; ^
     $BSTR=[System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($pword) ; ^
         [System.Runtime.InteropServices.Marshal]::PtrToStringAuto($BSTR) > .init.txt
 set /p pass=<.init.txt & del .init.txt
-if NOT %pass%==hades goto RETRY
-if %pass%==hades goto LOCK
+if NOT %pass%==kronos goto RETRY
+if %pass%==kronos goto LOCK
 echo Invalid choice.
 goto CONFIRM
 
@@ -53,7 +71,7 @@ powershell -Command $pword = read-host "Enter password" -AsSecureString ; ^
     $BSTR=[System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($pword) ; ^
         [System.Runtime.InteropServices.Marshal]::PtrToStringAuto($BSTR) > .init.txt
 set /p pass=<.init.txt & del .init.txt
-if NOT %pass%==hades goto FAIL
+if NOT %pass%==kronos goto FAIL
 attrib -h -s "Control Panel.{21EC2020-3AEA-1069-A2DD-08002B30309D}"
 ren "Control Panel.{21EC2020-3AEA-1069-A2DD-08002B30309D}" Vault
 echo Folder Unlocked successfully
